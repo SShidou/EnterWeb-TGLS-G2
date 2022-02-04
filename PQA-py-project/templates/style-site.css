@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    text-align: center;
+}
+
+input[type=password] {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    text-align: center;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+label {
+    color: rgb(255, 0, 128);
+    background-color: rgb(203, 249, 255);
+    text-align: center;
+}
+
+.front {
+    text-align: center;
+    background-color: rgb(215, 232, 253);
+}
+
+form {
+    text-align: center;
+}
+
+table,
+tr {
+    border-collapse: collapse;
+    border-style: double;
+    border: 2px solid rgb(255, 97, 242);
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    border: 2px solid rgb(255, 97, 242);
+}
+
+table tr:nth-child(odd) {
+    background-color: rgba(131, 255, 126, 0.719);
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(248, 255, 157, 0.925);
+}
+
+tr:hover {
+    background-color: rgba(177, 255, 249, 0.897);
+}
+
+tr:nth-child(1) {
+    background-color: skyblue;
+}
