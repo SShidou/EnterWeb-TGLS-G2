@@ -41,7 +41,7 @@ class RegisterForm(FlaskForm):
    def validate_uname(self, uname_to_check):
       user = User.query.filter_by(uname=uname_to_check.data).first()
       if user:
-         raise ValidationError('Username already existed! Please try a differnt user name')
+         raise ValidationError('Warning: Username already existed, please try another.')
 
    uname = StringField(label="User name", validators=[Length(min=6, max=25), DataRequired()])
    password1 = PasswordField(label="Password", validators=[Length(min=6), DataRequired()])
@@ -72,9 +72,9 @@ class Item(db.Model):
       self.datejoin = datejoin
 
 @app.route('/')
-@app.route('/home')
-def home_page():
-   return render_template('home.html')
+@app.route('/index')
+def index_page():
+   return render_template('index.html')
 
 @app.route('/new', methods = ['GET', 'POST'])
 @login_required
@@ -157,7 +157,7 @@ def login_page():
 def logout_page():
    logout_user()
    flash(f'You have logged out', category='info')
-   return redirect(url_for('home_page'))
+   return redirect(url_for('index_page'))
 
 if __name__ == '__main__':
    db.create_all()

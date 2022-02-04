@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+<h1>This is the register page</h1>
+<form method="post" class="form-register" >
+    {{ form.hidden_tag() }}
+
+    {{ form.uname.label() }}<br>
+    {{ form.uname(class="input", placeholder="User name") }}<br>
+    
+    {{ form.password1.label() }}<br>
+    {{ form.password1(class="input", placeholder="Password") }}<br>
+    
+    {{ form.password2.label() }}<br>
+    {{ form.password2(class="input", placeholder="Confirm password") }}<br>
+
+    {{ form.submit(class="btn btn-primary") }}
+</form>    
+{% endblock %}
