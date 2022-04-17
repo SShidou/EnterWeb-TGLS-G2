@@ -1,4 +1,4 @@
-# Created by pytest automatically.
-py-flask-reversed/*
-*.log
-
+*.zip
+/COMP1640_TGLS_Backup_2
+/EnterWebBeta
+.gitignore
