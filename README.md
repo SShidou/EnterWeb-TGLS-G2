@@ -10,14 +10,13 @@ TGLS team welcomes contributions and visitors from anyone and everyone. Please s
     > DO DINH NGUYEN (site design, tester)
 
 ## Product and Process Link:
-- [Source repo]()
+- [Source repo](https://github.com/SShidou/EnterWeb-TGLS-G2)
 - [Trello (team mamnagement)](https://trello.com/b/ODLGiMpI/main)
-- [Product demo]() 
+- [Product demo](https://bit.ly/3OocSO2) 
 - [Development Plan (with Product & Sprint Backlogs)]()
-- [Meeting Minutes]()
+- [Meeting Minutes](https://github.com/SShidou/EnterWeb-TGLS-G2/tree/main/Minutes_Meeting)
 - [ERD]()
 - [Database (with provided credentials)]()
-- [Source files]()
 
 
 ## Licensing
