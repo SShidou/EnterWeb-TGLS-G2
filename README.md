@@ -13,10 +13,10 @@ TGLS team welcomes contributions and visitors from anyone and everyone. Please s
 - [Source repo](https://github.com/SShidou/EnterWeb-TGLS-G2)
 - [Trello (team mamnagement)](https://trello.com/b/ODLGiMpI/main)
 - [Product demo](https://bit.ly/3OocSO2) 
-- [Development Plan (with Product & Sprint Backlogs)]()
+- [Development Plan (with Product & Sprint Backlogs)](https://github.com/SShidou/EnterWeb-TGLS-G2/blob/main/protest/Product_detail/Product+Sprint_Backlogs.docx)
 - [Meeting Minutes](https://github.com/SShidou/EnterWeb-TGLS-G2/tree/main/Minutes_Meeting)
-- [ERD]()
-- [Database (with provided credentials)]()
+- [ERD](https://github.com/SShidou/EnterWeb-TGLS-G2/blob/main/protest/Product_detail/TGLS_EnterWeb_ERD.png)
+- [Database (with provided credentials)](https://github.com/SShidou/EnterWeb-TGLS-G2/blob/main/protest/Product_detail)
 
 
 ## Licensing
