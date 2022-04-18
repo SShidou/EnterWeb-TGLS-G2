@@ -54,6 +54,21 @@
     <hr>
     <button type="submit" class="btn btn-info">Update Post</button>
 </form>
+<hr>
+<hr>
+@auth
+@if(Auth::user()->role == 1 or Auth::User()->id == $post->user_id)
+<div class="pt-2" style="margin-left: auto; margin-right: auto;">    
+    <form action="{{ __('/post/delete/') }}{{ $post->id }}" method="post" class="form-alt">
+        @csrf
+        @method('DELETE')
+        <h6>Delete This Post! Make sure u wanna remove it, dear Admin or Post's author</h6>
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
+    </form>
+</div>
+@else
+@endif
+@endauth
 <style>
     hr {
         opacity: 0

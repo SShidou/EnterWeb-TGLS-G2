@@ -12,12 +12,12 @@ class Profile extends Model
     use Notifiable;
 
     protected $guarded = [];
-
+    // no path yet
     public function profileImage()
     {
         $imagePath = ($this->image) ? $this->image : 'profile/egBN0wuawLUAzV1g2kcSvZFfK4oQtzwtKpRvoASH.png';
 
-        return '/storage/' . $imagePath;
+        return 'public/storage/profileimg' . $imagePath;
     }
 
     public function user()

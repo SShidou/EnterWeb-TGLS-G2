@@ -14,25 +14,30 @@ class CategorySeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   //reset time pls
         $date = Carbon::tomorrow();
         Category::create([
-           'catename' => 'IT',
+            'id' => 1,
+            'catename' => 'IT',
             'closure_date' => $date,
         ]);
         Category::create([
+            'id' => 2,
             'catename' => 'BA',
             'closure_date' => $date,
         ]);
         Category::create([
+            'id' => 3,
             'catename' => 'GD',
             'closure_date' => $date,
         ]);
         Category::create([
+            'id' => 4,
             'catename' => 'Other',
             'closure_date' => $date,
         ]);
         Category::create([
+            'id' => 5,
             'catename' => 'Academic',
             'closure_date' => $date,
         ]);

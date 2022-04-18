@@ -51,14 +51,15 @@ button[type=submit] {
 
 /* ---Custom Button--- */
 .btn1 {
-    background-color: #5BE39A;
-    color: #5B81E3;
+    background-color: #73f0ad;
+    color: #5071c5;
     font-weight: bold;
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
     padding: 4px 12px;
     margin: 0 20px 0;
+    border: none;
     border-radius: 1em;
     display: flex;
     transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
@@ -67,7 +68,7 @@ button[type=submit] {
 }
     .btn1:hover {
         transform: translateX(0.15em);
-        background-color: #D0D0D0;
+        background-color: silver;
         text-decoration: none;
     }
 
@@ -84,11 +85,11 @@ button[type=submit] {
     padding: 6px 8px;
     transition-duration: 0.4s;
     color: black;
-    background: linear-gradient(#DDD, #ADD8E6, #75ddff);
+    background: linear-gradient(aliceblue, #ADD8E6, #75ddff);
 }
     .btn-a2:hover {
         box-shadow: 3px 5px 4px lightblue inset;
-        text-shadow: 0 0 3px #fc4c4c, 0 0 5px #3a3aff;
+        text-shadow: 0 0 3px lime, 0 0 5px #3a3aff;
     }
 
 .btn-disable {

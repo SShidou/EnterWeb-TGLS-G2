@@ -9,14 +9,14 @@
 </div>
 <div class="text-center">Note: click id to view idea</div>
 <br>
-@if(Auth()->user()->role == 3)
-<div class="container-md">
-    <div class="col-md-12">        
+<div class="container-md" style="overflow-x:auto;">
+    <div class="col-md-12">
         @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}
         </div>
         @endif
+        @if(Auth()->user()->role == 3)
         <table class="table table-hover table-dark" style="text-align: center;">
             <thead>
                 <tr>
@@ -57,13 +57,6 @@
     </div>
 </div>
 @else
-<div class="container-md" style="overflow-x:auto;">
-    <div class="col-md-12">
-        @if(session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-        @endif
         <table class="table table-hover table-dark" style="text-align: center;">
             <thead>
                 <tr>

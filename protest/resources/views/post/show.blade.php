@@ -14,7 +14,7 @@
                 <div class="d-flex comment-text">Published:<div style="color:blue;">{{ $post->created_at->diffForHumans() }}</div>/ by: <div style="color:green;">{{ $post->author }}</div>
                 </div>
             </div>
-            <medium>Post content: <br> {{ $post->content }}</medium>
+            <medium class="col-md-4">Post content: <br> <small class="comment-text">{{ $post->content }}</small></medium>
             <div class="border border-2 p-3">
                 <h4>Commenting...</h4>
                 <div class="mb-3">
@@ -114,7 +114,8 @@
     }
 
     .comment-text {
-        font-size: 12px
+        font-size: 12px;
+        word-wrap: break-word
     }
 
     .status small {

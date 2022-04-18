@@ -14,12 +14,14 @@
 <hr>
 <div class="container-md">
     <div class="col-md-12">
-        @if(session()->has('message'))
+@if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}
         </div>
         @endif
-        @if(Auth()->user()->role == 3)
+@if(Auth()->user()->role == 4)
+<p>Note so fast, return to home now</p>
+@elseif(Auth()->user()->role == 3)      
         <table id="table table-hover table-dark" style="text-align: center;">
             <thead>
                 <tr>

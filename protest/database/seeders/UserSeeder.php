@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
+            'id' => 1,
             'name' => 'Admin1',
             'username' => 'adminuser',
             'role' => '1',
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('admin123'),
         ]);
         User::create([
+            'id' => 2,
             'name' => 'QAM01',
             'username' => 'qamanageruser',
             'role' => '2',
@@ -30,6 +32,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('321dsa'),
         ]);
         User::create([
+            'id' => 3,
             'name' => 'QAC01',
             'username' => 'qacooruser1',
             'role' => '3',
@@ -38,6 +41,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123dsa'),
         ]);
         User::create([
+            'id' => 4,
             'name' => 'QAC02',
             'username' => 'qacooruser2',
             'role' => '3',
@@ -46,6 +50,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123dsa'),
         ]);
         User::create([
+            'id' => 5,
             'name' => 'userBeta',
             'username' => 'staff',
             'role' => '4',
