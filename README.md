@@ -5,9 +5,9 @@ OK! This file containing various stuff. Except the Licensing section, JUST READ 
 ## Contributing
 TGLS team welcomes contributions and visitors from anyone and everyone. Please see our guidelines for contributing.
 - TGLS member: 
-    > PHAM QUANG ANH (scrum master, product owner)
-    > LE TRI BAO (dev, information architect) 
-    > DO DINH NGUYEN (site design, tester)
+    - PHAM QUANG ANH (scrum master, product owner)
+    - LE TRI BAO (dev, information architect) 
+    - DO DINH NGUYEN (site design, tester)
 
 ## Product and Process Link:
 - [Source repo](https://github.com/SShidou/EnterWeb-TGLS-G2)
@@ -21,6 +21,7 @@ TGLS team welcomes contributions and visitors from anyone and everyone. Please s
 
 ## Licensing
 > Copyright 2022 - TGLS & Greenwich University
+Read Terms & Conditions (full version, on our product footer)
 > Copyright 2015 - Apache
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at - http://www.apache.org/licenses/LICENSE-2.0
