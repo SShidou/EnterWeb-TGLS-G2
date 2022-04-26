@@ -12,7 +12,7 @@
     </button>
 </div>
 <hr>
-<div class="container-md">
+<div class="container-md" style="overflow-x:auto;">
     <div class="col-md-12">
 @if(session()->has('message'))
         <div class="alert alert-success">

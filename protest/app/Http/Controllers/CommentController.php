@@ -19,7 +19,7 @@ class CommentController extends Controller
             'comment' => 'required'
         ]);
         $id = auth()->user()->id;
-
+        # Email notify details
         $details = [
             'title' => 'Hi there! TGLS here',
             'body' => 'Your post has a new comment! Wanna check?',
@@ -28,6 +28,7 @@ class CommentController extends Controller
         $mail = User::where('email', $post->user->email)->get('email');
 
         Mail::to($mail)->send(new TestMail($details));
+        
         $post->comments()->create([
             'user_id' => $id,
             'writer' =>  $data['writer'],

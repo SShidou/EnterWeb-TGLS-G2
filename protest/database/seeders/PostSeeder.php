@@ -13,7 +13,7 @@ class PostSeeder extends Seeder
      *
      * @return void
      */
-    // Note that the rename the file name = to the file name here!
+    // Note that the rename the file name = to the file name below!
     public function run()
     {
         $date_y = Carbon::yesterday();

@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('author');
             $table->text('content');
             $table->string('file')->nullable();
+            // $table->int('view_cnt');
             $table->timestamps();
         });
         Schema::table('posts', function(Blueprint $table){

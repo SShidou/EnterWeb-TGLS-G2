@@ -111,35 +111,71 @@
             <!-- End Post -->
         </div>
         <!-- Right Post entry -->
+        @php
+        $cmt = \App\Models\Comment::orderBy('created_at', 'DESC')->paginate(3);
+        $p_latest = \App\Models\Post::orderBy('created_at', 'DESC')->paginate(3);
+        $interaction = $posts->likes->count() + $posts->dislikes->count() + $posts->comments->count();
+        $p_popular = \App\Models\Post::orderBy('created_at', 'ASC')->paginate(3);
+        # $p_view = \App\Models\Post::orderBy('view_cnt', 'DESC')->paginate(3);
+        @endphp
         <div class="w3-col l4">
-            <!--Most Popular Ideas, Most Viewed, Latest Ideas and Comments-->
+            <!-- Most Popular Posts -->
             <div class="w3-card w3-margin">
                 <div class="w3-container bg-lightgrey">
-                    <h4>Most Viewed Posts (under construction)</h4>
+                    <h4><i class="fa fa-line-chart"></i> Most Popular Posts</h4>
                 </div>
-                {{-- <!-- @php
-                $cmt = \App\Models\Comment::where('user_id', $cmt->user_id)
-                ->orderBy('created_at', 'DESC')
-                ->paginate(3);
-                @endphp
+                @foreach($p_popular as $popular_posts)
+                <ul class="w3-ul w3-hoverable w3-white">
+                    <li class="w3-padding-16">
+                        <span class="w3-medium"><b>{{ $popular_posts->author }}</b></span> |
+                        <span>{{ $interaction }} <i class="fa fa-trophy" style="color:goldenrod"></i></span><br>
+                        <span class="w3-small">{{ $popular_posts->content }}</span>
+                    </li>
+                </ul>
+                @endforeach
+            </div>
+            <hr>
+            <!-- Latest Posts -->
+            <div class="w3-card w3-margin">
+                <div class="w3-container bg-lightgrey">
+                    <h4><i class="fa fa-newspaper-o"></i> Newest Posts</h4>
+                </div>
+                @foreach($p_latest as $new_posts)
+                <ul class="w3-ul w3-hoverable w3-white">
+                    <li class="w3-padding-16">
+                        <span class="w3-medium"><b>{{ $new_posts->author }}</b></span> |
+                        <span class="w3-opacity"><i>{{ $new_posts->created_at->diffForHumans() }}</i></span><br>
+                        <span class="w3-small">{{ $new_posts->content }}</span>
+                    </li>
+                </ul>
+                @endforeach
+            </div>
+            <hr>
+            <!-- Latest Comments -->
+            <div class="w3-card w3-margin">
+                <div class="w3-container bg-lightgrey">
+                    <h4><i class="fa fa-comments-o"></i> Newest Comments</h4>
+                </div>
                 @foreach($cmt as $cmts)
                 <ul class="w3-ul w3-hoverable w3-white">
                     <li class="w3-padding-16">
-                        <span class="w3-large">{{ $cmts->writer }}</span> |
-                        <span>? <i class="fa fa-eye"></i></span><br>
+                        <span class="w3-medium"><b>{{ $cmts->writer }}</b></span> |
+                        <span class="w3-opacity"><i>{{ $cmts->created_at->diffForHumans() }}</i></span><br>
                         <span class="w3-small">{{ $cmts->comment }}</span>
                     </li>
                 </ul>
-                @endforeach --> --}}
+                @endforeach
+            </div>
+            <hr>
+            <!-- Most Viewed -->
+            <div class="w3-card w3-margin">
+                <div class="w3-container bg-lightgrey">
+                    <h4><i class="fa fa-graduation-cap"></i> Most Viewed Posts (under construction)</h4>
+                </div>
                 <ul class="w3-ul w3-hoverable w3-white">
                     <li class="w3-padding-16">
                         <img src="#" alt="" class="w3-left w3-margin-right" style="width:40px">
-                        <span class="w3-large">author</span>|
-                        <span>? <i class="fa fa-eye"></i></span><br>
-                        <span class="w3-small">Post Title</span>
-                    </li>
-                    <li class="w3-padding-16">
-                        <span class="w3-large">author</span> |
+                        <span class="w3-medium"><b>author</b></span> |
                         <span>? <i class="fa fa-eye"></i></span><br>
                         <span class="w3-small">Post Title</span>
                     </li>

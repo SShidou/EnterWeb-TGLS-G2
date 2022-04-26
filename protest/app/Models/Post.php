@@ -27,15 +27,15 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function category()
+    public function category() //change to many-to-many
     {
         return $this->belongsTo(Category::class);
     }
+
     public function likes()
     {
         return $this->hasMany(Like::class);
     }
-
     public function likeBy(User $user)
     {
         return $this->likes->contains('user_id', $user->id);
@@ -50,6 +50,11 @@ class Post extends Model
         return $this->dislikes->contains('user_id', $user->id);
     }
 
+    // public function view_cnt()
+    // {
+    //     return $this->hasMany(PostView::class);
+    // }
+    
     public function comments(){
         return $this->hasMany(Comment::class);
     }

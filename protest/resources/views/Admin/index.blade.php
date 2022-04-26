@@ -11,7 +11,7 @@
     </button>
 </div>
 <hr>
-<div class="container-md">
+<div class="container-md" style="overflow-x:auto;">
     <div class="col-md-12">
         <table class="table table-hover table-dark" style="text-align: center;">
             <thead>

@@ -2,30 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\TestMail;
-use App\Models\Like;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rule;
-use Intervention\Image\Facades\Image;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Like;
+use Illuminate\Http\Request;
+use App\Mail\TestMail;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Validation\Rule;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class PostsController extends Controller
 {
 
-
     public function index()
     {
-        #$date = new Carbon(request('date'));
         $post = Post::orderBy('created_at', 'DESC')
             ->paginate(5);
-
         return view('post.dashboard', [
             'post' => $post,
         ]);
@@ -35,7 +32,6 @@ class PostsController extends Controller
     {
         $this-> middleware('auth');
     }
-
     public function index2()
     {
         #$date = new Carbon(request('date'));
@@ -62,16 +58,17 @@ class PostsController extends Controller
             'category_id' => ['required', Rule::exists('categories','id')],
             'author' => 'required',
             'content' => 'required',
-            #'image',
+            // 'image' => 'required',
             'file' => 'required',
         ]);
+        # Post file - format: ? (!=audio/video)
         $file = request()->file->getMimeType();
         $file = request('file')-> store('uploads','public');
-        #image/jpeg
-                #$imagePath = request('image')-> store('uploads','public');
-                #$image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
-                #$image -> save();
-
+        # Post image - format: jpeg?
+        // $imagePath = request('image')-> store('post_img','public');
+        // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
+        // $image -> save();
+        # Email notify details
         $details = [
             'title' => 'TGLS test mail',
             'body' => 'Body test mail'
@@ -85,13 +82,12 @@ class PostsController extends Controller
         $mail = User::where('role', '3')->get('email');
 
         Mail::to($mail)->send(new TestMail($details));
-
-        #auth()->user()->posts()->create($data);
+        
         auth()->user()->posts()->create([
             'category_id' => $data['category_id'],
             'content' => $data['content'],
             'author' => $data['author'],
-            #'image' => $image,
+            // 'image' => $image,
             'file' => $file,
         ]);
         return redirect('/dashboard')->with('message', 'Your post is uploaded!');;
@@ -119,7 +115,7 @@ class PostsController extends Controller
             'category_id' => ['required'],
             'author' => 'required',
             'content' => 'required',
-            #'image',
+            // 'image' => 'required',
             'file' => 'required',
         ]);
         $file = request('file')-> store('uploads','public');
@@ -127,7 +123,7 @@ class PostsController extends Controller
             'category_id' => $data['category_id'],
             'content' => $data['content'],
             'author' => $data['author'],
-            #'image' => $image,
+            // 'image' => $image,
             'file' => $file,]);
         return redirect("/post/{$post->id}");
     }
@@ -139,4 +135,7 @@ class PostsController extends Controller
             return redirect("/post/all")->with('message', 'Post Deleted');
         }
     }
+
+    // public function post_view(Post $post){
+    // }
 }
