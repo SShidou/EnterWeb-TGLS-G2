@@ -49,14 +49,14 @@
         height: 300px;
         margin: auto;
         padding: 0;
-        border-radius: 10px
+        border-radius: 10px;
+        color: white
     }
 </style>
 <script>
 // chart 1 - total data
 anychart.onDocumentReady(function() {
     anychart.theme(anychart.themes.darkEarth);
-
 // set the data
     var data = {
     header: ["Name", "Total number"],
@@ -66,7 +66,7 @@ anychart.onDocumentReady(function() {
         ["Comments", {{ $comment->count() }}],
         ["Likes", {{ $like->count() }}],
         ["Dislikes", {{ $dislike->count() }}],
-        ["Department", 3]
+        ["Department", 4]
     ]};
 // create the chart
     var chart = anychart.bar();
@@ -75,57 +75,58 @@ anychart.onDocumentReady(function() {
     chart.container("container");
     chart.draw();
 });
+
 // chart 2 - # post per dept
 const data2 = {
-        labels: ['IT', 'Academic', 'Office', 'Tester'],        
-        datasets: [{            
-            label: '# Posts',
-            data: [1, 5, 4, 10],
-            backgroundColor: [
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-            ],
-            borderColor: [
-                'rgb(255, 206, 86)',
-                'rgb(255, 206, 86)',
-                'rgb(255, 206, 86)',
-                'rgb(153, 102, 255)',
-            ],
-            borderWidth: 1.2,
-            color: ['rgb(255, 206, 86)'],       
-        }]
-    };
-    const config2 = {
-        type: 'bar',
-        data: data2,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                },
-                x: {
-                    title: {
+    labels: ['IT', 'Academic', 'Office', 'Tester'],        
+    datasets: [{            
+        label: '# Posts',
+        data: [1, 5, 4, 10],
+        backgroundColor: [
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+        ],
+        borderColor: [
+            'rgb(255, 206, 86)',
+            'rgb(255, 206, 86)',
+            'rgb(255, 206, 86)',
+            'rgb(153, 102, 255)',
+        ],
+        borderWidth: 1.2,
+        color: ['rgb(255, 206, 86)'], //not display   
+    }]
+};
+const config2 = {
+    type: 'bar',
+    data: data2,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+            x: {
+                title: {
                     display: true,
                     text: 'Department',
                     color: 'wheat',
-                    }
                 }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: '# Posts / Department',
-                    color: 'aliceblue',
-                }
-            },            
-            animations: {},        
-        }
-    };
-    const postDeptChart = new Chart(
-        document.getElementById('postDeptChart'),
-        config2
-    );
+            }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: '# Posts / Department',
+                color: 'aliceblue',
+            }
+        },            
+        animations: {}
+    }
+};
+const postDeptChart = new Chart(
+    document.getElementById('postDeptChart'),
+    config2
+);
 </script>
 @endsection

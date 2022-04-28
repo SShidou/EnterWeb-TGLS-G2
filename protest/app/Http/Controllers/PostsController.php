@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rule;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostsController extends Controller
 {
@@ -59,11 +60,17 @@ class PostsController extends Controller
             'author' => 'required',
             'content' => 'required',
             // 'image' => 'required',
-            // 'file' => 'required',
+            'file' => 'nullable',
         ]);
         # Post file - format: ? (!=audio/video)
-        $file = request()->file->getMimeType();
-        $file = request('file')-> store('uploads','public');
+        // $file = request()->file->getMimeType();
+        // $file = request('file')-> store('uploads','public');
+        if ($req->file('file') == null) {
+            $file = "";
+        }else{
+            $file = request()->file->getMimeType();
+            $file = request('file')-> store('uploads','public');
+        }
         # Post image - format: jpeg?
         // $imagePath = request('image')-> store('post_img','public');
         // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
@@ -110,15 +117,20 @@ class PostsController extends Controller
             return view('post.edit', compact('post'));
         }
     }
-    public function update(Post $post){
+    public function update(Request $req, Post $post){
         $data = request()->validate([
             'category_id' => ['required'],
             'author' => 'required',
             'content' => 'required',
             // 'image' => 'required',
-            // 'file' => 'required',
+            'file' => 'nullable',
         ]);
-        $file = request('file')-> store('uploads','public');
+        if ($req->file('file') == null) {
+            $file = "";
+        }else{
+            $file = request()->file->getMimeType();
+            $file = request('file')-> store('uploads','public');
+        }
         $post -> update([
             'category_id' => $data['category_id'],
             'content' => $data['content'],
