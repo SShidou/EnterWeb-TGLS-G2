@@ -59,7 +59,7 @@ class PostsController extends Controller
             'author' => 'required',
             'content' => 'required',
             // 'image' => 'required',
-            'file' => 'required',
+            // 'file' => 'required',
         ]);
         # Post file - format: ? (!=audio/video)
         $file = request()->file->getMimeType();
@@ -116,7 +116,7 @@ class PostsController extends Controller
             'author' => 'required',
             'content' => 'required',
             // 'image' => 'required',
-            'file' => 'required',
+            // 'file' => 'required',
         ]);
         $file = request('file')-> store('uploads','public');
         $post -> update([

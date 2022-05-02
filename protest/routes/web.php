@@ -19,7 +19,7 @@ use App\Http\Controllers\staffController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// cmt edit [5]
+
 Route::get('/', function () {
     return view('home');
 });
@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/post/update/{post}', [PostsController::class, 'update'])->name('post.update');
     Route::delete('/post/delete/{post}', [PostsController::class, 'destroy'])->name('post.delete');
 });
-
+// cmt edit [5] - add view_cnt
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/category/list', [App\Http\Controllers\CategoryController::class, 'index'])->name('cate.list');
@@ -81,6 +81,13 @@ Route::delete('/post/{post}/likes', [App\Http\Controllers\PostLikeController::cl
 Route::post('/post/{post}/dislikes', [App\Http\Controllers\DisLikeController::class, 'storing'])->name('post.dislikes')->middleware('auth');
 Route::delete('/post/{post}/dislikes', [App\Http\Controllers\DisLikeController::class, 'destroying'])->name('post.dislikes')->middleware('auth');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dept/list', [\App\Http\Controllers\DeptController::class, 'index'])->name('dept.list');
+    Route::get('/dept/create', [App\Http\Controllers\DeptController::class, 'create'])->name('dept.create');
+    Route::post('/dept', [App\Http\Controllers\DeptController::class, 'store']);
+    Route::get('/dept/edit/{department}', [App\Http\Controllers\DeptController::class, 'edit'])->name('dept.edit');
+    Route::put('/dept/update/{department}', [DeptController::class, 'update'])->name('dept.update');
+    Route::delete('/dept/delete/{department}', [DeptController::class, 'destroy'])->name('dept.delete');
+});
+
 Route::get('/sendmail', [\App\Http\Controllers\MailController::class, 'sendEmail']);
-
-

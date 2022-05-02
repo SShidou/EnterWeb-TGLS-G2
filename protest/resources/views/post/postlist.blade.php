@@ -5,7 +5,7 @@
     <button class="btn-a4"><a href="{{ route('admin') }}">Manage User</a></button>
     <button class="btn-a4"><a href="#">Manage Comment</a></button>
     <button class="btn-a4"><a href="{{ route('cate.list') }}">Manage Post Tag</a></button>
-    <button class="btn-a4"><a href="#">Manage Department</a></button><br><br>
+    <button class="btn-a4"><a href="{{ route('dept.list') }}">Manage Department</a></button><br><br>
 </div>
 <div class="text-center">Note: click id to view idea</div>
 <br>

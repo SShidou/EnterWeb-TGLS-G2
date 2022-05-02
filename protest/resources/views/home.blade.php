@@ -7,12 +7,7 @@
 </div>
 <hr>
 <div class="container">
-    <h5 class="text-center text-uppercase">Dashboard</h5>
-    <br>
-    <div id="container" class="col-lg-6"></div>
-    <div class="col-md-6"></div>
-    <br>
-    <div class="col-md-4 offset-md-4">        
+    <h5 class="text-center text-uppercase">Dashboard</h5><br>    
         @php
         $post = App\Models\Post::all();
         $comment = App\Models\Comment::all();
@@ -20,23 +15,8 @@
         $like = App\Models\Like::all();
         $dislike = App\Models\Dislike::all();
         @endphp
-        <div class="row border border-2">
-            <div class="col border border-1">
-                <h6>Total tags: </h6>
-                <h6>Total posts: </h6>
-                <h6>Total comments: </h6>
-                <h6>Likes: </h6>
-                <h6>Dislikes: </h6>
-            </div>
-            <div class="col-2 justify-content-center">
-                <h6>{{ $cate->count() }}</h6>
-                <h6>{{ $post->count() }}</h6>
-                <h6>{{ $comment->count() }}</h6>
-                <h6>{{ $like->count() }}</h6>
-                <h6>{{ $dislike->count() }}</h6>
-            </div>
-        </div>
-    </div>
+    <div id="container" class="col-lg-6"></div><br>
+    <canvas id="postDeptChart" class="col-md-6" style="background: linear-gradient(#282828, #404040);"></canvas><br>
 </div>
 <hr style="color: none;">
 <div class="container">
@@ -65,13 +45,15 @@
         box-shadow: 5px 10px 18px #888888;
         background-color: aliceblue;
     }
-    #container {
+    #container, #postDeptChart {
         height: 300px;
         margin: auto;
-        padding: 0
+        padding: 0;
+        border-radius: 10px
     }
 </style>
 <script>
+// chart 1 - total data
 anychart.onDocumentReady(function() {
     anychart.theme(anychart.themes.darkEarth);
 
@@ -93,5 +75,57 @@ anychart.onDocumentReady(function() {
     chart.container("container");
     chart.draw();
 });
+// chart 2 - # post per dept
+const data2 = {
+        labels: ['IT', 'Academic', 'Office', 'Tester'],        
+        datasets: [{            
+            label: '# Posts',
+            data: [1, 5, 4, 10],
+            backgroundColor: [
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+            ],
+            borderColor: [
+                'rgb(255, 206, 86)',
+                'rgb(255, 206, 86)',
+                'rgb(255, 206, 86)',
+                'rgb(153, 102, 255)',
+            ],
+            borderWidth: 1.2,
+            color: ['rgb(255, 206, 86)'],       
+        }]
+    };
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    title: {
+                    display: true,
+                    text: 'Department',
+                    color: 'wheat',
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: '# Posts / Department',
+                    color: 'aliceblue',
+                }
+            },            
+            animations: {},        
+        }
+    };
+    const postDeptChart = new Chart(
+        document.getElementById('postDeptChart'),
+        config2
+    );
 </script>
 @endsection

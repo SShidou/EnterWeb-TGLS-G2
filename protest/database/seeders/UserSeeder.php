@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         User::create([
             'id' => 1,
             'name' => 'Admin1',
-            'username' => 'adminuser',
+            'username' => 'Admin1',
             'role' => '1',
             'email' => 'admin1@test.com',
             'password' => bcrypt('admin123'),
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         User::create([
             'id' => 2,
             'name' => 'QAM01',
-            'username' => 'qamanageruser',
+            'username' => 'Manager_1',
             'role' => '2',
             'phonenumber' => '012332123',
             'email' => 'qam01@test.com',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
         User::create([
             'id' => 3,
             'name' => 'QAC01',
-            'username' => 'qacooruser1',
+            'username' => 'Coordinator_1',
             'role' => '3',
             'phonenumber' => '045654560',
             'email' => 'qac01@test.com',
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         User::create([
             'id' => 4,
             'name' => 'QAC02',
-            'username' => 'qacooruser2',
+            'username' => 'Coordinator_2',
             'role' => '3',
             'phonenumber' => '045654562',
             'email' => 'qac02@test.com',
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
         User::create([
             'id' => 5,
             'name' => 'userBeta',
-            'username' => 'staff',
+            'username' => 'userBeta',
             'role' => '4',
             'phonenumber' => '086546321',
             'email' => 'userbeta1@test.com',

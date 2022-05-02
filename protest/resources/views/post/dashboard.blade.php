@@ -14,6 +14,9 @@
         </div>
         @endif
     </header>
+    @php
+    $tag = \App\Models\Category::orderBy('created_at', 'ASC')->get();
+    @endphp
     <div class="w3-row">
         <!-- Post entries -->
         <div class="w3-col l8 s12">
@@ -24,12 +27,9 @@
                 </div>
                 <div class="w3-container w3-white">
                     <div><span class="w3-tag w3-margin-bottom">News</span>
-                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IT</span>
-                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">BA</span>
-                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">GD</span>
-                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Other</span>
-                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Academic</span>
-                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Test1</span>
+                        @foreach($tag as $tags)
+                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">{{ $tags->catename }}</span>
+                        @endforeach
                     </div><!-- News, Design, IT, BA, Subjects, Programming, Others-->
                 </div>
             </div>
@@ -43,7 +43,6 @@
                         <span class="w3-tag w3-light-grey w3-small">Programming</span></label><br>
                     <span class="w3-opacity"><i>8 hours ago, by</i> user</span>
                 </div>
-
                 <div class="w3-container">
                     <h6>New Python update version 3.10.2 is now officially on services</h6>
                     <h6>Look like P.G.Salgado has provided us a new python update, the changing feature highlights include:</h6>
@@ -72,7 +71,7 @@
                 </div>
             </div>
             <hr>
-            <!-- Left Post entry - Real Post - Latest Post -->
+            <!-- Left Post entry - Real Post (Latest) -->
             @foreach($post as $posts)
             <div class="w3-card-4 w3-margin w3-white">
                 <!-- <iframe src="" alt="" style="width:100%"></iframe> -->
@@ -112,11 +111,11 @@
         </div>
         <!-- Right Post entry -->
         @php
-        $cmt = \App\Models\Comment::orderBy('created_at', 'DESC')->paginate(3);
-        $p_latest = \App\Models\Post::orderBy('created_at', 'DESC')->paginate(3);
+        $cmt = \App\Models\Comment::latest()->take(3)->get();
+        $p_latest = \App\Models\Post::latest()->take(3)->get();
         $interaction = $posts->likes->count() + $posts->dislikes->count() + $posts->comments->count();
-        $p_popular = \App\Models\Post::orderBy('created_at', 'ASC')->paginate(3);
-        # $p_view = \App\Models\Post::orderBy('view_cnt', 'DESC')->paginate(3);
+        $p_popular = \App\Models\Post::orderBy('created_at', 'DESC')->take(3)->get();
+        # $p_view = \App\Models\Post::orderBy('view_cnt', 'DESC')->take(3)->get();
         @endphp
         <div class="w3-col l4">
             <!-- Most Popular Posts -->
