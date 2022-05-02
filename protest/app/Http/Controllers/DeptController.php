@@ -25,7 +25,7 @@ class DeptController extends Controller
         Department::Create([
             'deptname' => $data['deptname'],
         ]);
-        return redirect()->route('dept.deptlist');
+        return redirect()->route('deptlist');
     }
 
     public function edit(Department $dept)
@@ -35,7 +35,7 @@ class DeptController extends Controller
 
     public function update(Department $dept)
     {
-        if(auth()->user()->role == 1)
+        if(auth()->user()->role == 1 || auth()->user()->role == 2)
         {
             $data = request()->validate([
                 'deptname' => 'required',
@@ -43,17 +43,7 @@ class DeptController extends Controller
             $dept -> Update([
                 'deptname' => $data['deptname'],
             ]);
-            return redirect()->route('dept.deptlist');
-        }
-        elseif(auth()->user()->role == 2)
-        {
-            $data = request()->validate([
-                'deptname' => 'required',
-            ]);
-            $dept -> Update([
-                'deptname' => $data['deptname']
-            ]);
-            return redirect()->route('dept.deptlist');
+            return redirect()->route('deptlist');
         }
     }
 

@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(PostSeeder::class);
         $this->call(CmtSeeder::class);
-        $this->call(LikeSeeder::class);
-        // $this->call(DislikeSeeder::class);
-        $this->call(DepartmentSeeder::class);
+        $this->call(LikesSeeder::class);
+        // $this->call(DislikesSeeder::class);
+        $this->call(DeptSeeder::class);
     }
 }

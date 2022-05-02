@@ -14,6 +14,7 @@
         $cate = App\Models\Category::all();
         $like = App\Models\Like::all();
         $dislike = App\Models\Dislike::all();
+        $dept = App\Models\Department::all();
         @endphp
     <div id="container" class="col-lg-6"></div><br>
     <canvas id="postDeptChart" class="col-md-6" style="background: linear-gradient(#282828, #404040);"></canvas><br>
@@ -66,7 +67,7 @@ anychart.onDocumentReady(function() {
         ["Comments", {{ $comment->count() }}],
         ["Likes", {{ $like->count() }}],
         ["Dislikes", {{ $dislike->count() }}],
-        ["Department", 4]
+        ["Department", {{ $dept->count() }}]
     ]};
 // create the chart
     var chart = anychart.bar();

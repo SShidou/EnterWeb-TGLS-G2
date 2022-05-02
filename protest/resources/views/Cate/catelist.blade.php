@@ -5,7 +5,7 @@
     <button class="btn-a4"><a href="{{ route('post.list') }}">Manage Post</a></button>
     <button class="btn-a4"><a href="#">Manage Comment</a></button>
     <button class="btn-a4"><a href="{{ route('admin') }}">Manage User</a></button>
-    <button class="btn-a4"><a href="#">Manage Department</a></button>
+    <button class="btn-a4"><a href="{{ route('dept.list') }}">Manage Department</a></button>
     <br><br>
     <button class="btn-a3">
         <a href="{{ route('cate.create') }}">New Post Tag</a>
@@ -14,15 +14,15 @@
 <hr>
 <div class="container-md" style="overflow-x:auto;">
     <div class="col-md-12">
-@if(session()->has('message'))
+        @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}
         </div>
         @endif
 @if(Auth()->user()->role == 4)
-<p>Note so fast, return to home now</p>
+<p>Not so fast, return to home now</p>
 @elseif(Auth()->user()->role == 3)      
-        <table id="table table-hover table-dark" style="text-align: center;">
+        <table id="table table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -42,7 +42,7 @@
             </tbody>
         </table>
         @else
-        <table id="table table-hover table-dark" style="text-align: center;">
+        <table id="table table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -79,12 +79,11 @@ table, tr{
     border-style: double;
     border: 2px solid wheat;
     width: 95%;
-    margin-left:auto;
-    margin-right:auto;
+    margin:auto;
     text-align: center
 }
 thead {
-    background-color:white;
+    background-color: white
 }
 td{
     border: 2px solid lavender;
@@ -97,9 +96,6 @@ table tr:nth-child(even){
 }
 tr:hover {
     background-color: rgba(177, 255, 249, 0.8);
-}
-tr:nth-child(1){
-    background-color:skyblue;
 }
 hr {
     opacity: 0

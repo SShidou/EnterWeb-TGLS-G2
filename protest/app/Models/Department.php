@@ -13,18 +13,18 @@ class Department extends Model
         'deptname',
     ];
 
-    public function post(){
-        return $this->hasMany(User::class);
-    }
+    // public function user(){
+    //     return $this->hasMany(User::class);
+    // }
     
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::deleting(function ($dept) {
-            if ($dept->user()->count() > 0) {
-                return false;
-            }
-        });
-    }
+    //     static::deleting(function ($dept) {
+    //         if ($dept->user()->count() > 0) {
+    //             return false;
+    //         }
+    //     });
+    // }
 }

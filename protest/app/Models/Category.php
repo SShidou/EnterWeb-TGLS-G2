@@ -25,6 +25,6 @@ class Category extends Model
             if ($category->post()->count() > 0) {
                 return false;
             }
-        });
+        }); //check post relationship before delete
     }
 }

@@ -85,9 +85,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dept/list', [App\Http\Controllers\DeptController::class, 'index'])->name('dept.list');
     Route::get('/dept/create', [App\Http\Controllers\DeptController::class, 'create'])->name('dept.create');
     Route::post('/dept', [App\Http\Controllers\DeptController::class, 'store']);
-    Route::get('/dept/edit/{department}', [App\Http\Controllers\DeptController::class, 'edit'])->name('dept.edit');
-    Route::put('/dept/update/{department}', [App\Http\Controllers\DeptController::class, 'update'])->name('dept.update');
-    Route::delete('/dept/delete/{department}', [App\Http\Controllers\DeptController::class, 'destroy'])->name('dept.delete');
+    Route::get('/dept/edit/{dept}', [App\Http\Controllers\DeptController::class, 'edit'])->name('dept.edit');
+    Route::put('/dept/update/{dept}', [App\Http\Controllers\DeptController::class, 'update'])->name('dept.update');
+    Route::delete('/dept/delete/{dept}', [App\Http\Controllers\DeptController::class, 'destroy'])->name('dept.delete');
 });
 
 Route::get('/sendmail', [\App\Http\Controllers\MailController::class, 'sendEmail']);
